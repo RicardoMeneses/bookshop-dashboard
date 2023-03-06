@@ -7,7 +7,7 @@ const Dashboard: React.FC<DashboardLayoutProps> = ({ children }) => {
     <div className='min-h-screen'>
       <SideBar />
       <Header />
-      <div>{children}</div>
+      <main className='lg:pl-[260px] p-8 pt-36 md:pt-28'>{children}</main>
     </div>
   );
 };
