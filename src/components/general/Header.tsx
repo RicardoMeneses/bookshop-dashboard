@@ -7,7 +7,7 @@ const Header = () => {
         <RiSearchLine className='text-gray-500 absolute top-3 left-2' />
         <input
           type='text'
-          className=' bg-gray-100 outline-none text-gray-300 py-2 pl-8 pr-4 rounded-full w-full'
+          className=' bg-gray-100 outline-none text-gray-600 py-2 pl-8 pr-4 rounded-full w-full'
           placeholder='Buscar'
         />
       </form>
