@@ -1,10 +1,17 @@
 import Dashboard from '@/components/layouts/Dashboard';
+import Delete from '@/components/modals/Delete';
 import { reduceText } from '@/helpers';
 import { useState } from 'react';
 import { RiHeartLine, RiEditLine, RiDeleteBin3Line } from 'react-icons/ri';
 
 const ProductDetail = () => {
   const [showMore, setShowMore] = useState(false);
+  const [openDelete, setOpenDelete] = useState(false);
+
+  const handleOpenDelete = () => {
+    setOpenDelete(!openDelete);
+  };
+
   return (
     <Dashboard>
       <div className='flex flex-col md:flex-row gap-5 items-center justify-center'>
@@ -52,12 +59,16 @@ const ProductDetail = () => {
             <button className='flex items-center text-sm lg:text-base justify-center bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full p-3 shadow hover:shadow-md'>
               <RiEditLine /> Editar
             </button>
-            <button className='flex items-center text-sm lg:text-base justify-center bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full p-3 shadow hover:shadow-md'>
+            <button
+              className='flex items-center text-sm lg:text-base justify-center bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full p-3 shadow hover:shadow-md'
+              onClick={handleOpenDelete}
+            >
               <RiDeleteBin3Line /> Eliminar
             </button>
           </div>
         </div>
       </div>
+      <Delete openDelete={openDelete} setOpenDelete={handleOpenDelete} />
     </Dashboard>
   );
 };

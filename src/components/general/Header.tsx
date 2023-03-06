@@ -2,7 +2,7 @@ import { RiSearchLine, RiAddCircleLine } from 'react-icons/ri';
 
 const Header = () => {
   return (
-    <header className='fixed bg-white shadow-lg lg:pl-[260px] w-full flex flex-col md:flex-row items-center justify-between p-5 gap-4'>
+    <header className='fixed z-10 bg-white shadow-lg lg:pl-[260px] w-full flex flex-col md:flex-row items-center justify-between p-5 gap-4'>
       <form className='relative  w-full md:w-2/4'>
         <RiSearchLine className='text-gray-500 absolute top-3 left-2' />
         <input
