@@ -1,7 +1,9 @@
+import Dashboard from '@/components/layouts/Dashboard';
+
 export default function Home() {
   return (
-    <>
-      <h1>Hola</h1>
-    </>
+    <Dashboard>
+      <h1>adios</h1>
+    </Dashboard>
   );
 }
