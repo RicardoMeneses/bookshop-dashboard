@@ -10,7 +10,7 @@ const SideBar = () => {
   };
   return (
     <aside
-      className={`transition-all duration-500 fixed top-0 w-80 h-full overflow-y-auto border-r border-gray-800 p-8 flex flex-col justify-between lg:left-0 ${
+      className={`z-50 transition-all duration-500 fixed top-0 w-80 h-full overflow-y-auto border-r border-gray-800 p-8 flex flex-col justify-between lg:left-0 ${
         open ? 'left-0' : '-left-full'
       } `}
     >
@@ -72,7 +72,7 @@ const SideBar = () => {
       {/* Boton menu movil */}
       <button
         onClick={toggleMenu}
-        className='lg:hidden fixed bottom-8 right-6 p-2 text-lg rounded-full'
+        className='z-50 lg:hidden fixed bottom-8 right-6 p-2 text-lg rounded-full'
       >
         {open ? <RiCloseLine /> : <RiMenu3Fill />}
       </button>
