@@ -1,6 +1,6 @@
 import { DashboardLayoutProps } from '@/interfaces/dashboard.interface';
-import Header from '../Header';
-import SideBar from '../SideBar';
+import Header from '../general/Header';
+import SideBar from '../general/SideBar';
 
 const Dashboard: React.FC<DashboardLayoutProps> = ({ children }) => {
   return (

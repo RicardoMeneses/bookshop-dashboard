@@ -49,7 +49,7 @@ const SideBar = () => {
       {/* Botón menú móvil */}
       <button
         onClick={toggleMenu}
-        className='z-50 lg:hidden fixed bottom-8 right-6 p-2 text-lg rounded-full'
+        className='z-50 lg:hidden bg-gradient-to-r from-sky-500 to-indigo-500 text-white fixed bottom-8 right-6 p-2 text-lg rounded-full'
       >
         {open ? <RiCloseLine /> : <RiMenu3Fill />}
       </button>

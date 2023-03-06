@@ -1,7 +1,7 @@
 import Book from '@/components/cards/Book';
 import Dashboard from '@/components/layouts/Dashboard';
 
-export default function Home() {
+const favoritos = () => {
   return (
     <Dashboard>
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3'>
@@ -16,4 +16,6 @@ export default function Home() {
       </div>
     </Dashboard>
   );
-}
+};
+
+export default favoritos;
