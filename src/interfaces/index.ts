@@ -10,6 +10,7 @@ export interface PopUpProps {
 export interface DeleteProps {
   openDelete: boolean;
   setOpenDelete: () => void;
+  id: string;
 }
 
 export interface DashboardLayoutProps {
@@ -17,7 +18,7 @@ export interface DashboardLayoutProps {
 }
 
 export interface BookValues {
-  _id?: string;
+  _id: string;
   title: string;
   author: string;
   imgUrl: string;
