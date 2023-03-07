@@ -47,9 +47,6 @@ const ProductDetail = () => {
             Número de páginas: <span className=' font-normal'>974</span>
           </p>
           <p className='font-bold'>
-            Género: <span className=' font-normal'>Acción</span>
-          </p>
-          <p className='font-bold'>
             Fecha de publicación: <span className=' font-normal'>18 de Enero 2022</span>
           </p>
           <div className='flex gap-2 mt-5'>

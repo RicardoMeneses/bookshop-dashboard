@@ -1,5 +1,5 @@
 import PopUp from '../general/PopUp';
-import { DeleteProps } from '@/interfaces/delete-modal.interface';
+import { DeleteProps } from '@/interfaces';
 import { RiCloseCircleLine, RiDeleteBin3Line } from 'react-icons/ri';
 
 const Delete: React.FC<DeleteProps> = ({ openDelete, setOpenDelete }) => {

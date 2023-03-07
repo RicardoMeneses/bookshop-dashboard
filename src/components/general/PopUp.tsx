@@ -1,4 +1,4 @@
-import { PopUpProps } from '@/interfaces/popUp.interface';
+import { PopUpProps } from '@/interfaces';
 
 const PopUp: React.FC<PopUpProps> = ({ children, open }) => {
   return (
