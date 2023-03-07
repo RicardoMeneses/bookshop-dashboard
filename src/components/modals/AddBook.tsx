@@ -17,7 +17,7 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen }) => {
     language: '',
     numberOfPages: '0',
     publicationDate: '',
-    isFavourite: false,
+    isFavorite: false,
   };
 
   return (
@@ -38,7 +38,7 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen }) => {
             numberOfPages: Yup.string().required('Este campo es obligatorio'),
             gender: Yup.string().required('Este campo es obligatorio'),
             publicationDate: Yup.string().required('Este campo es obligatorio'),
-            isFavourite: Yup.boolean(),
+            isFavorite: Yup.boolean(),
           })}
           onSubmit={(values, actions) => {
             setTimeout(() => {

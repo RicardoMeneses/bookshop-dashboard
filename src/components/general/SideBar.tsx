@@ -31,7 +31,7 @@ const SideBar = () => {
             } mb-3 flex items-center gap-4 hover:bg-gradient-to-r hover:from-sky-500 hover:to-indigo-500 hover:text-white py-2 px-3 rounded-2xl transition-colors`}
           >
             <RiHome3Line />
-            Libros
+            Todos
           </Link>
         </li>
         <li>

@@ -17,6 +17,7 @@ export interface DashboardLayoutProps {
 }
 
 export interface BookValues {
+  _id?: string;
   title: string;
   author: string;
   imgUrl: string;
@@ -25,7 +26,16 @@ export interface BookValues {
   language: string;
   numberOfPages: string;
   publicationDate: string;
-  isFavourite: boolean;
+  isFavorite: boolean;
+  slug?: string;
+}
+
+export interface HomeProps {
+  books: BookValues[];
+}
+
+export interface BookAsProps {
+  book: BookValues;
 }
 
 export interface AddBookProps {
