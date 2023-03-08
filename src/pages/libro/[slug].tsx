@@ -6,10 +6,12 @@ import { GetServerSideProps } from 'next';
 import { useState } from 'react';
 import { RiHeartLine, RiEditLine, RiDeleteBin3Line } from 'react-icons/ri';
 import { BookAsProps } from '@/interfaces';
+import AddBook from '@/components/modals/AddBook';
 
 const ProductDetail: React.FC<BookAsProps> = ({ book }) => {
   const [showMore, setShowMore] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
+  const [openAddBook, setOpenAddBook] = useState(false);
   const {
     imgUrl,
     synopsis,
@@ -31,6 +33,15 @@ const ProductDetail: React.FC<BookAsProps> = ({ book }) => {
   const handleLike = async () => {
     await api.put(`books/${slug}`, { isFavorite: !isFavorite });
     window.location.reload();
+  };
+
+  const handleOpen = () => {
+    setOpenAddBook(!openAddBook);
+  };
+
+  const languages: Record<string, string> = {
+    english: 'Inglés',
+    spanish: 'Español',
   };
 
   return (
@@ -57,7 +68,7 @@ const ProductDetail: React.FC<BookAsProps> = ({ book }) => {
             Editora: <span className=' font-normal'>{publisher}</span>
           </p>
           <p className='font-bold'>
-            Lenguaje: <span className=' font-normal'>{language}</span>
+            Lenguaje: <span className=' font-normal'>{languages[language]}</span>
           </p>
           <p className='font-bold'>
             Número de páginas: <span className=' font-normal'>{numberOfPages}</span>
@@ -72,7 +83,10 @@ const ProductDetail: React.FC<BookAsProps> = ({ book }) => {
             >
               <RiHeartLine /> {isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos'}
             </button>
-            <button className='flex items-center text-sm lg:text-base justify-center bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full p-3 shadow hover:shadow-md'>
+            <button
+              className='flex items-center text-sm lg:text-base justify-center bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full p-3 shadow hover:shadow-md'
+              onClick={handleOpen}
+            >
               <RiEditLine /> Editar
             </button>
             <button
@@ -85,6 +99,7 @@ const ProductDetail: React.FC<BookAsProps> = ({ book }) => {
         </div>
       </div>
       <Delete openDelete={openDelete} setOpenDelete={handleOpenDelete} id={_id} />
+      <AddBook open={openAddBook} setOpen={handleOpen} isNew={false} book={book} />
     </Dashboard>
   );
 };

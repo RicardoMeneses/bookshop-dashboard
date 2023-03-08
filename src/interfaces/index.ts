@@ -54,6 +54,8 @@ export interface BookAsProps {
 export interface AddBookProps {
   open: boolean;
   setOpen: () => void;
+  isNew: boolean;
+  book?: BookValues;
 }
 
 export interface InputProps {

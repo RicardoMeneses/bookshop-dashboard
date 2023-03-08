@@ -8,19 +8,21 @@ import { AddBookValues, AddBookProps } from '@/interfaces';
 import { RiCloseCircleLine } from 'react-icons/ri';
 import { Formik } from 'formik';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
-const AddBook: React.FC<AddBookProps> = ({ open, setOpen }) => {
+const AddBook: React.FC<AddBookProps> = ({ open, setOpen, isNew, book }) => {
   const initialValues: AddBookValues = {
-    title: '',
-    author: '',
-    synopsis: '',
-    imgUrl: '',
-    publisher: '',
-    language: '',
-    numberOfPages: 0,
-    publicationDate: '',
-    isFavorite: false,
+    title: !isNew && book ? book.title : '',
+    author: !isNew && book ? book.author : '',
+    synopsis: !isNew && book ? book.synopsis : '',
+    imgUrl: !isNew && book ? book.imgUrl : '',
+    publisher: !isNew && book ? book.publisher : '',
+    language: !isNew && book ? book.language : '',
+    numberOfPages: !isNew && book ? Number(book.numberOfPages) : 0,
+    publicationDate: !isNew && book ? book.publicationDate : '',
+    isFavorite: !isNew && book ? book.isFavorite : false,
   };
+  const router = useRouter();
 
   const closeModal = (resetForm: Function) => {
     setOpen();
@@ -52,17 +54,32 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen }) => {
           })}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(true);
-            api
-              .post('books', values)
-              .then((res) => {
-                setOpen();
-                window.location.reload();
-                toast.success('Libro agregado correctamente');
-              })
-              .catch((err) => {
-                setSubmitting(false);
-                toast.error('No se pudo agregar el libro :(');
-              });
+            if (isNew) {
+              api
+                .post('books', values)
+                .then((res) => {
+                  setOpen();
+                  router.reload();
+                  toast.success('Libro agregado correctamente');
+                })
+                .catch((err) => {
+                  setSubmitting(false);
+                  toast.error('No se pudo agregar el libro :(');
+                });
+            } else {
+              api
+                .put(`books/${book?.slug}`, values)
+                .then((res: any) => {
+                  setOpen();
+                  router.push(`/libro/${res.slug}`);
+                  toast.success('Libro actualizado correctamente');
+                  setSubmitting(false);
+                })
+                .catch((err) => {
+                  setSubmitting(false);
+                  toast.error('No se pudo editar el libro :(');
+                });
+            }
           }}
         >
           {(formik) => (
