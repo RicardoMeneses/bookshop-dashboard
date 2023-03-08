@@ -122,6 +122,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         redirect: {
           destination: '/',
         },
+        props: {
+          book: {},
+        },
       };
     }
     return {
