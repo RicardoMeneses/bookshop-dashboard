@@ -3,6 +3,7 @@ import { DeleteProps } from '@/interfaces';
 import { RiCloseCircleLine, RiDeleteBin3Line } from 'react-icons/ri';
 import api from '@/services/api';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 
 const Delete: React.FC<DeleteProps> = ({ openDelete, setOpenDelete, id }) => {
   const router = useRouter();
@@ -11,6 +12,7 @@ const Delete: React.FC<DeleteProps> = ({ openDelete, setOpenDelete, id }) => {
     setOpenDelete();
     if (router.pathname.includes('/libro/')) {
       router.push('/');
+      toast.success('Libro eliminado correctamente');
       return;
     }
     window.location.reload();

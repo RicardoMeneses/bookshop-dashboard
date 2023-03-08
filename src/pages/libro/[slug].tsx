@@ -4,7 +4,7 @@ import api from '@/services/api';
 import { reduceText } from '@/helpers';
 import { GetServerSideProps } from 'next';
 import { useState } from 'react';
-import { RiHeartLine, RiEditLine, RiDeleteBin3Line } from 'react-icons/ri';
+import { RiHeartLine, RiEditLine, RiDeleteBin3Line, RiLoader5Line } from 'react-icons/ri';
 import { BookAsProps } from '@/interfaces';
 import AddBook from '@/components/modals/AddBook';
 
@@ -12,6 +12,7 @@ const ProductDetail: React.FC<BookAsProps> = ({ book }) => {
   const [showMore, setShowMore] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
   const [openAddBook, setOpenAddBook] = useState(false);
+  const [loading, setLoading] = useState(false);
   const {
     imgUrl,
     synopsis,
@@ -31,8 +32,10 @@ const ProductDetail: React.FC<BookAsProps> = ({ book }) => {
   };
 
   const handleLike = async () => {
+    setLoading(true);
     await api.put(`books/${slug}`, { isFavorite: !isFavorite });
     window.location.reload();
+    setLoading(false);
   };
 
   const handleOpen = () => {
@@ -45,14 +48,13 @@ const ProductDetail: React.FC<BookAsProps> = ({ book }) => {
   };
 
   return (
-    <Dashboard>
+    <Dashboard title={title}>
       <div className='flex flex-col md:flex-row gap-5 items-center justify-center'>
         <div className='w-full md:w-1/2 lg:w-1/3 h-[500px]'>
           <img src={imgUrl} alt={title} className='w-full h-full object-contain' />
         </div>
         <div className='w-full md:w-1/2 lg:w-2/3 text-center md:text-start'>
-          <h1 className='text-4xl font-bold'>{title}</h1>
-          <p className='text-gray-500'>{author}</p>
+          <p className='text-gray-500 font-bold'>{author}</p>
           <p className='mt-4 w-full lg:w-3/4'>
             {reduceText(synopsis, showMore)}
             {synopsis.length > 400 && (
@@ -81,7 +83,13 @@ const ProductDetail: React.FC<BookAsProps> = ({ book }) => {
               className='flex items-center text-sm lg:text-base justify-center bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full p-3 shadow hover:shadow-md'
               onClick={handleLike}
             >
-              <RiHeartLine /> {isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos'}
+              {loading ? (
+                <RiLoader5Line className=' animate-spin' />
+              ) : (
+                <>
+                  <RiHeartLine /> {isFavorite ? 'Quitar de favoritos' : 'Añadir a favoritos'}
+                </>
+              )}
             </button>
             <button
               className='flex items-center text-sm lg:text-base justify-center bg-gradient-to-r from-sky-500 to-indigo-500 text-white rounded-full p-3 shadow hover:shadow-md'

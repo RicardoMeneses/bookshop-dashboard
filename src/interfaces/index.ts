@@ -1,5 +1,6 @@
 export interface HeaderProps {
   setOpen: () => void;
+  title?: string;
 }
 
 export interface PopUpProps {
@@ -15,6 +16,7 @@ export interface DeleteProps {
 
 export interface DashboardLayoutProps {
   children: React.ReactNode;
+  title?: string;
 }
 
 export interface BookValues {

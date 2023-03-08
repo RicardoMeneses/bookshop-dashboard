@@ -5,7 +5,7 @@ import Textarea from '../utils/form/Textarea';
 import Select from '../utils/form/Select';
 import api from '@/services/api';
 import { AddBookValues, AddBookProps } from '@/interfaces';
-import { RiCloseCircleLine } from 'react-icons/ri';
+import { RiCloseCircleLine, RiLoader5Line } from 'react-icons/ri';
 import { Formik } from 'formik';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/router';
@@ -31,7 +31,7 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen, isNew, book }) => {
 
   return (
     <PopUp open={open}>
-      <div className='bg-white rounded-md p-5 w-96 h-[700px] md:w-[450px] md:h-auto overflow-scroll relative'>
+      <div className='bg-white rounded-md p-5 w-96 h-[650px] md:w-[450px] md:h-auto overflow-scroll relative'>
         <Formik
           initialValues={initialValues}
           validationSchema={Yup.object({
@@ -59,7 +59,7 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen, isNew, book }) => {
                 .post('books', values)
                 .then((res) => {
                   setOpen();
-                  router.reload();
+                  router.push('/');
                   toast.success('Libro agregado correctamente');
                 })
                 .catch((err) => {
@@ -88,7 +88,9 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen, isNew, book }) => {
                 className='absolute top-3 right-3 text-2xl cursor-pointer text-gray-400'
                 onClick={closeModal.bind(null, formik.resetForm)}
               />
-              <h1 className='text-center font-bold'>Agregar nuevo libro</h1>
+              <h1 className='text-center font-bold'>
+                {isNew ? 'Agregar nuevo libro' : 'Editar Libro'}
+              </h1>
               <Input name='title' label='Título' placeholder='Título' />
               <Input name='author' label='Autor' placeholder='Autor' />
               <Textarea name='synopsis' label='Sinopsis' placeholder='Sinopsis' />
@@ -116,16 +118,16 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen, isNew, book }) => {
                 <button
                   className='outline py-2 px-3 rounded-full text-gray-400'
                   onClick={closeModal.bind(null, formik.resetForm)}
-                  disabled={formik.isSubmitting}
+                  type='button'
                 >
                   Cancelar
                 </button>
                 <button
                   type='submit'
-                  className=' outline py-2 px-3 rounded-full'
+                  className='outline py-2 px-3 rounded-full'
                   disabled={formik.isSubmitting}
                 >
-                  Guardar
+                  {formik.isSubmitting ? <RiLoader5Line className=' animate-spin' /> : 'Guardar'}
                 </button>
               </div>
             </form>
