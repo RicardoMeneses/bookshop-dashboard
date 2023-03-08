@@ -40,7 +40,7 @@ const Book: React.FC<BookAsProps> = ({ book }) => {
         <div className='relative h-full group'>
           <img src={imgUrl} alt={title} className='h-full w-full object-contain' />
           {(isFavorite || like) && (
-            <div className='absolute bottom-6 left-0 bg-white shadow-sm rounded-tr-md rounded-br-md w-16 h-6 flex items-center justify-center'>
+            <div className='absolute bottom-8 md:bottom-6 left-0 bg-white shadow-sm rounded-tr-md rounded-br-md w-16 h-6 flex items-center justify-center'>
               <RiHeartFill className='text-red-800 text-lg' />
             </div>
           )}

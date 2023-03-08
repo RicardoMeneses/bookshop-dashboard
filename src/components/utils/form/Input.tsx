@@ -4,6 +4,7 @@ import { useField } from 'formik';
 const Input: React.FC<InputProps> = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   const { name, type = 'text' } = props;
+  const today = new Date().toISOString().substring(0, 10);
 
   return (
     <div className='flex flex-col mt-2'>
@@ -14,6 +15,7 @@ const Input: React.FC<InputProps> = ({ label, ...props }) => {
         {...field}
         {...props}
         type={type}
+        max={today}
         className={`border rounded-md h-8 text-gray-600 p-2 ${
           meta.touched && meta.error ? 'border-red-500' : ''
         }`}

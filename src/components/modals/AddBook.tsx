@@ -52,7 +52,7 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen, isNew, book }) => {
             publicationDate: Yup.string().required('Este campo es obligatorio'),
             isFavorite: Yup.boolean(),
           })}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values, { setSubmitting, resetForm }) => {
             setSubmitting(true);
             if (isNew) {
               api
@@ -61,6 +61,7 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen, isNew, book }) => {
                   setOpen();
                   router.push('/');
                   toast.success('Libro agregado correctamente');
+                  resetForm();
                 })
                 .catch((err) => {
                   setSubmitting(false);
