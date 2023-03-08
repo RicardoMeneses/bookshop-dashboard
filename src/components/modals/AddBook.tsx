@@ -64,6 +64,11 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen, isNew, book }) => {
                   resetForm();
                 })
                 .catch((err) => {
+                  if (err.response.data.message === 'BOOK_ALREADY_EXIST') {
+                    setSubmitting(false);
+                    toast.error('Ya existe un libro con ese nombre :(');
+                    return;
+                  }
                   setSubmitting(false);
                   toast.error('No se pudo agregar el libro :(');
                 });
@@ -77,6 +82,11 @@ const AddBook: React.FC<AddBookProps> = ({ open, setOpen, isNew, book }) => {
                   setSubmitting(false);
                 })
                 .catch((err) => {
+                  if (err.response.data.message === 'BOOK_ALREADY_EXIST') {
+                    setSubmitting(false);
+                    toast.error('Ya existe un libro con ese nombre :(');
+                    return;
+                  }
                   setSubmitting(false);
                   toast.error('No se pudo editar el libro :(');
                 });

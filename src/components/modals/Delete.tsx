@@ -15,7 +15,8 @@ const Delete: React.FC<DeleteProps> = ({ openDelete, setOpenDelete, id }) => {
       toast.success('Libro eliminado correctamente');
       return;
     }
-    window.location.reload();
+    toast.success('Libro eliminado correctamente');
+    router.push('/');
   };
   return (
     <PopUp open={openDelete}>
