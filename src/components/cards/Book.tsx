@@ -36,7 +36,7 @@ const Book: React.FC<BookAsProps> = ({ book }) => {
 
   return (
     <div className='flex flex-col items-center mb-5'>
-      <div className='w-3/4 h-60 relative transition-all'>
+      <div className='w-full md:w-3/4 h-60 relative transition-all'>
         <div className='relative h-full group'>
           <img src={imgUrl} alt={title} className='h-full w-full object-contain' />
           {(isFavorite || like) && (
