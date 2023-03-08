@@ -15,7 +15,7 @@ const Dashboard: React.FC<DashboardLayoutProps> = ({ children }) => {
       <Header setOpen={handleOpen} />
       <main className='lg:pl-[260px] p-8 pt-36 md:pt-28'>{children}</main>
 
-      <AddBook open={openAddBook} setOpen={handleOpen} isNew={false} />
+      <AddBook open={openAddBook} setOpen={handleOpen} isNew={true} />
     </div>
   );
 };
