@@ -6,7 +6,7 @@ const Select: React.FC<SelectProps> = ({ label, placeholder, options, ...props }
   const { name } = props;
 
   return (
-    <div className='flex flex-col mt-4'>
+    <div className='flex flex-col mt-2'>
       <label htmlFor={name} className='text-sm mb-1'>
         {label}
       </label>

@@ -31,6 +31,18 @@ export interface BookValues {
   slug?: string;
 }
 
+export interface AddBookValues {
+  title: string;
+  author: string;
+  imgUrl: string;
+  synopsis: string;
+  publisher: string;
+  language: string;
+  numberOfPages: number;
+  publicationDate: string;
+  isFavorite: boolean;
+}
+
 export interface HomeProps {
   books: BookValues[];
 }

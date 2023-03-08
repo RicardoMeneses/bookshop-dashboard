@@ -44,12 +44,14 @@ const ProductDetail: React.FC<BookAsProps> = ({ book }) => {
           <p className='text-gray-500'>{author}</p>
           <p className='mt-4 w-full lg:w-3/4'>
             {reduceText(synopsis, showMore)}
-            <span
-              className='text-blue-600 underline ml-2 cursor-pointer'
-              onClick={() => setShowMore(!showMore)}
-            >
-              {showMore ? 'Ver menos' : 'Ver más'}
-            </span>
+            {synopsis.length > 400 && (
+              <span
+                className='text-blue-600 underline ml-2 cursor-pointer'
+                onClick={() => setShowMore(!showMore)}
+              >
+                {showMore ? 'Ver menos' : 'Ver más'}
+              </span>
+            )}
           </p>
           <p className='mt-5 font-bold'>
             Editora: <span className=' font-normal'>{publisher}</span>

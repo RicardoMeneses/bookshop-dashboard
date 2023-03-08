@@ -6,7 +6,7 @@ const Input: React.FC<InputProps> = ({ label, ...props }) => {
   const { name, type = 'text' } = props;
 
   return (
-    <div className='flex flex-col mt-4'>
+    <div className='flex flex-col mt-2'>
       <label htmlFor={name} className='text-sm mb-1'>
         {label}
       </label>
