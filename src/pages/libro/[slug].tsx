@@ -117,6 +117,13 @@ export default ProductDetail;
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const book = await api.get(`/books/${context.params?.slug}`);
+    if (!book) {
+      return {
+        redirect: {
+          destination: '/',
+        },
+      };
+    }
     return {
       props: {
         book,
